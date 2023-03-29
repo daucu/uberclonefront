@@ -195,7 +195,7 @@ const Body = () => {
         <View>
           <Image
             source={{
-              uri: "https://i2-prod.mylondon.news//article16106961.ece/ALTERNATES/s1200b/2_Uber-pink-cars.jpg",
+              uri: "https://s.wsj.net/public/resources/images/BN-XS108_201803_E_20180301182540.gif",
             }}
             style={{
               width: "100%",
