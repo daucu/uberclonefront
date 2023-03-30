@@ -16,7 +16,18 @@ const BottomTabNav = () => {
   // https://reactnavigation.org/docs/material-bottom-tab-navigator/
 
   return (
-    <Tab.Navigator initialRouteName="Body">
+    <Tab.Navigator
+      initialRouteName="Body"
+      barStyle={{
+        borderTopColor: "gray",
+        borderTopWidth: 0.5,
+        backgroundColor: "white",
+      }}
+      activeColor="black"
+      inactiveColor="gray"
+      shifting={true}
+      sceneAnimationEnabled={true}
+    >
       <Tab.Screen
         name="Body"
         component={Body}
@@ -28,6 +39,7 @@ const BottomTabNav = () => {
           ),
         }}
       />
+
       <Tab.Screen
         name="Services"
         component={Services}
@@ -50,11 +62,7 @@ const BottomTabNav = () => {
           headerShown: false,
           tabBarLabel: "Activiyt",
           tabBarIcon: ({ color }) => (
-            <FontAwesome5
-              name="clipboard-list"
-              color={color}
-              size={26}
-            />
+            <FontAwesome5 name="clipboard-list" color={color} size={26} />
           ),
         }}
       />

@@ -4,7 +4,11 @@ import { ScrollView } from "react-native";
 
 const Activity = () => {
   return (
-    <ScrollView>
+    <ScrollView
+      style={{
+        backgroundColor: "white",
+      }}
+    >
       <View
         style={{
           flex: 1,

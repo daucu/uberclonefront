@@ -9,13 +9,16 @@ import {
 import React from "react";
 import NavOptions from "../components/NavOptions";
 import tw from "twrnc";
-import BottomTabNav from "../components/BottomTabNav";
 import ImgSlider from "../components/ImgSlider";
 const Body = () => {
   console.disableYellowBox = true;
 
   return (
-    <ScrollView>
+    <ScrollView
+      style={{
+        backgroundColor: "white",
+      }}
+    >
       <View style={tw`p-5`}>
         <Image
           style={{

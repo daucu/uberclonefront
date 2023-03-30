@@ -16,7 +16,11 @@ import AntDesign from "react-native-vector-icons/AntDesign";
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
 const Profile = () => {
   return (
-    <ScrollView>
+    <ScrollView
+      style={{
+        backgroundColor: "white",
+      }}
+    >
       <View
         style={{
           flex: 1,

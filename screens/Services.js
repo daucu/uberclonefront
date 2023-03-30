@@ -36,7 +36,7 @@ const Services = () => {
             style={{
               width: "100%",
               height: 300,
-              resizeMode: "contain",
+              resizeMode: "cover",
               borderRadius: 10,
               margin: 10,
             }}
@@ -47,7 +47,11 @@ const Services = () => {
   };
 
   return (
-    <ScrollView>
+    <ScrollView
+      style={{
+        backgroundColor: "white",
+      }}
+    >
       <View
         style={{
           flex: 1,
@@ -175,7 +179,7 @@ const Services = () => {
                 width: 60,
                 height: 60,
                 borderRadius: 10,
-                resizeMode: "contain",
+                resizeMode: "cover",
                 alignSelf: "center",
               }}
             />
@@ -191,7 +195,7 @@ const Services = () => {
                 width: 60,
                 height: 60,
                 borderRadius: 10,
-                resizeMode: "contain",
+                resizeMode: "cover",
                 alignSelf: "center",
               }}
             />
@@ -207,7 +211,7 @@ const Services = () => {
                 width: 60,
                 height: 60,
                 borderRadius: 10,
-                resizeMode: "contain",
+                resizeMode: "cover",
                 alignSelf: "center",
               }}
             />
@@ -223,7 +227,7 @@ const Services = () => {
                 width: 60,
                 height: 60,
                 borderRadius: 10,
-                resizeMode: "contain",
+                resizeMode: "cover",
                 alignSelf: "center",
               }}
             />
@@ -250,7 +254,7 @@ const Services = () => {
               renderItem={renderItem}
               sliderWidth={400}
               itemWidth={340}
-              containerCustomStyle={{ marginTop: 10, alignSelf: "center" }}
+              covererCustomStyle={{ marginTop: 10, alignSelf: "center" }}
               layout={"default"}
               layoutCardOffset={18}
               inactiveSlideScale={0.94}
