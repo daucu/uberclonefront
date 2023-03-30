@@ -17,6 +17,7 @@ import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
 import { useNavigation } from "@react-navigation/native";
 const Profile = () => {
   const navigate = useNavigation();
+
   return (
     <ScrollView
       style={{
@@ -99,7 +100,10 @@ const Profile = () => {
             alignItems: "center",
           }}
         >
-          <View style={tw`bg-gray-200 p-2 rounded-lg w-[80px]`}>
+          <TouchableOpacity
+            style={tw`bg-gray-200 p-2 rounded-lg w-[80px]`}
+            onPress={() => navigate.navigate("Help")}
+          >
             <View>
               <Icon
                 name="help-box"
@@ -118,8 +122,10 @@ const Profile = () => {
             >
               Help
             </Text>
-          </View>
-          <View style={tw`bg-gray-200 p-2 rounded-lg w-[80px]`}>
+          </TouchableOpacity>
+          <TouchableOpacity style={tw`bg-gray-200 p-2 rounded-lg w-[80px]`}
+          onPress={() => navigate.navigate("Wallet")}
+          >
             <View
               style={{
                 display: "flex",
@@ -140,8 +146,8 @@ const Profile = () => {
             >
               Wallet
             </Text>
-          </View>
-          <View style={tw`bg-gray-200 p-2 rounded-lg w-[80px]`}>
+          </TouchableOpacity>
+          <TouchableOpacity style={tw`bg-gray-200 p-2 rounded-lg w-[80px]`}>
             <View
               style={{
                 display: "flex",
@@ -161,7 +167,7 @@ const Profile = () => {
             >
               Trips
             </Text>
-          </View>
+          </TouchableOpacity>
         </View>
         <View>
           <TouchableOpacity

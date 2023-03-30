@@ -13,6 +13,7 @@ import PhoneInput from "react-native-phone-number-input";
 import { useNavigation } from "@react-navigation/native";
 import axios from "axios";
 import { API } from "../constant/API";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Signup = () => {
   const navigate = useNavigation();
@@ -24,16 +25,29 @@ const Signup = () => {
 
   const handlesignup = () => {
     // console.log(name, email, address, phone, password);
-    axios
-      .post(`${API}/signup`, {
-        name: name,
-        email: email,
-        address: address,
-        phone: phone,
-        password: password,
-      })
+    // axios
+    //   .post(`${API}/signup`, {
+    //     name: name,
+    //     email: email,
+    //     address: address,
+    //     phone: phone,
+    //     password: password,
+    //   })
+    //   .then((res) => {
+    //     console.log(res.data);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
+
+    AsyncStorage.setItem(
+      "user",
+      JSON.stringify({ name, email, address, phone, password })
+    );
+
+    AsyncStorage.getItem("user")
       .then((res) => {
-        console.log(res.data);
+        console.log(JSON.parse(res));
       })
       .catch((err) => {
         console.log(err);
@@ -151,8 +165,8 @@ const Signup = () => {
           }}
         >
           <TouchableOpacity
-            onPress={() => navigate.navigate("Login")}
-            // onPress={() => handlesignup()}
+            // onPress={() => navigate.navigate("Login")}
+            onPress={() => handlesignup()}
             style={{
               backgroundColor: "black",
               padding: 10,

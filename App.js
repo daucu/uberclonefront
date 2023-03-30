@@ -15,6 +15,8 @@ import MainScreen from "./screens/MainScreen";
 import Activity from "./screens/Activity";
 import Services from "./screens/Services";
 import Account from "./screens/Account";
+import Help from "./screens/Help";
+import Wallet from "./screens/Wallet";
 export default function App() {
   const Stack = createNativeStackNavigator();
   // disable yellow warnings
@@ -90,6 +92,20 @@ export default function App() {
             <Stack.Screen
               name="Account"
               component={Account}
+              options={{
+                headerShown: true,
+              }}
+            />
+            <Stack.Screen
+              name="Help"
+              component={Help}
+              options={{
+                headerShown: true,
+              }}
+            />
+            <Stack.Screen
+              name="Wallet"
+              component={Wallet}
               options={{
                 headerShown: true,
               }}
