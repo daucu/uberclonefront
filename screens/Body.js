@@ -10,9 +10,50 @@ import React from "react";
 import NavOptions from "../components/NavOptions";
 import tw from "twrnc";
 import ImgSlider from "../components/ImgSlider";
+import { FlatList } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 const Body = () => {
-  console.disableYellowBox = true;
+  const navigation = useNavigation();
 
+  console.disableYellowBox = true;
+  const data2 = [
+    {
+      id: 1,
+      image: "https://links.papareact.com/3pn",
+      screen: "MapScreen",
+      label: "Luxury",
+    },
+    {
+      id: 2,
+      image: "https://links.papareact.com/3pn",
+      screen: "MapScreen",
+      label: "Economy",
+    },
+    {
+      id: 3,
+      image: "https://links.papareact.com/3pn",
+      screen: "MapScreen",
+      label: "Premium",
+    },
+    {
+      id: 4,
+      image: "https://links.papareact.com/3pn",
+      screen: "MapScreen",
+      label: "SUV",
+    },
+    {
+      id: 5,
+      image: "https://links.papareact.com/3pn",
+      screen: "MapScreen",
+      label: "Comfort",
+    },
+    {
+      id: 6,
+      image: "https://links.papareact.com/3pn",
+      screen: "MapScreen",
+      label: "Sports",
+    },
+  ];
   return (
     <ScrollView
       style={{
@@ -51,138 +92,42 @@ const Body = () => {
             </TouchableOpacity>
           </View>
         </View>
-        <View
-          style={{
-            justifyContent: "space-between",
-            alignItems: "center",
-            marginTop: 15,
-          }}
-        >
-          <View
-            style={{
-              flexDirection: "row",
-              alignItems: "center",
-              justifyContent: "space-between",
-            }}
-          >
+        <FlatList
+          data={data2}
+          keyExtractor={(item) => item.id}
+          horizontal
+          renderItem={({ item }) => (
             <View>
-              <TouchableOpacity>
-                <View
-                  style={tw`bg-gray-200 m-3 p-2 rounded-lg w-[70px] h-[70px] flex items-center justify-center`}
-                >
+              <TouchableOpacity
+                style={tw`p-2 flex justify-center bg-gray-200 m-2   w-20 h-20`}
+                onPress={() => navigation.navigate(item.screen)}
+              >
+                <View>
                   <Image
-                    source={{
-                      uri: "https://www.uber-assets.com/image/upload/f_auto,q_auto:eco,c_fill,w_896,h_504/f_auto,q_auto/products/carousel/UberX.png",
-                    }}
                     style={{
                       width: 80,
-                      height: 80,
+                      height: 60,
                       resizeMode: "contain",
+                    }}
+                    source={{
+                      uri: item.image,
                     }}
                   />
                 </View>
-                <Text
-                  style={{
-                    fontSize: 14,
-                    fontWeight: "400",
-                    color: "black",
-                    textAlign: "center",
-                    letterSpacing: 1,
-                  }}
-                >
-                  Rentals
-                </Text>
               </TouchableOpacity>
+              <Text
+                style={{
+                  textAlign: "center",
+                  letterSpacing: 1,
+                  color: "black",
+                  fontWeight: 500,
+                }}
+              >
+                {item.label}
+              </Text>
             </View>
-            <View>
-              <TouchableOpacity>
-                <View
-                  style={tw`bg-gray-200 m-3 p-2 rounded-lg w-[70px] h-[70px] flex items-center justify-center`}
-                >
-                  <Image
-                    source={{
-                      uri: "https://www.uber-assets.com/image/upload/f_auto,q_auto:eco,c_fill,w_896,h_504/f_auto,q_auto/products/carousel/UberX.png",
-                    }}
-                    style={{
-                      width: 80,
-                      height: 80,
-                      resizeMode: "contain",
-                    }}
-                  />
-                </View>
-                <Text
-                  style={{
-                    fontSize: 14,
-                    fontWeight: "400",
-                    color: "black",
-                    textAlign: "center",
-                    letterSpacing: 1,
-                  }}
-                >
-                  Shuttle
-                </Text>
-              </TouchableOpacity>
-            </View>
-            <View>
-              <TouchableOpacity>
-                <View
-                  style={tw`bg-gray-200 m-3 p-2 rounded-lg w-[70px] h-[70px] flex items-center justify-center`}
-                >
-                  <Image
-                    source={{
-                      uri: "https://www.uber-assets.com/image/upload/f_auto,q_auto:eco,c_fill,w_896,h_504/f_auto,q_auto/products/carousel/UberX.png",
-                    }}
-                    style={{
-                      width: 80,
-                      height: 80,
-                      resizeMode: "contain",
-                    }}
-                  />
-                </View>
-                <Text
-                  style={{
-                    fontSize: 14,
-                    fontWeight: "400",
-                    color: "black",
-                    textAlign: "center",
-                    letterSpacing: 1,
-                  }}
-                >
-                  Reserve
-                </Text>
-              </TouchableOpacity>
-            </View>
-            <View>
-              <TouchableOpacity>
-                <View
-                  style={tw`bg-gray-200 m-3 p-2 rounded-lg w-[70px] h-[70px] flex items-center justify-center`}
-                >
-                  <Image
-                    source={{
-                      uri: "https://www.uber-assets.com/image/upload/f_auto,q_auto:eco,c_fill,w_896,h_504/f_auto,q_auto/products/carousel/UberX.png",
-                    }}
-                    style={{
-                      width: 80,
-                      height: 80,
-                      resizeMode: "contain",
-                    }}
-                  />
-                </View>
-                <Text
-                  style={{
-                    fontSize: 14,
-                    fontWeight: "400",
-                    color: "black",
-                    textAlign: "center",
-                    letterSpacing: 1,
-                  }}
-                >
-                  Packages
-                </Text>
-              </TouchableOpacity>
-            </View>
-          </View>
-        </View>
+          )}
+        />
         <View
           style={{
             flexDirection: "row",
