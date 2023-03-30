@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, Image } from "react-native";
 import React from "react";
 import { ScrollView } from "react-native";
-
+import FontAwesome from "react-native-vector-icons/FontAwesome";
 const Activity = () => {
   return (
     <ScrollView
@@ -13,6 +13,7 @@ const Activity = () => {
         style={{
           flex: 1,
           padding: 10,
+          marginTop: 30,
         }}
       >
         <Text
@@ -80,7 +81,7 @@ const Activity = () => {
               marginTop: 40,
             }}
           >
-            Past
+            Past ride's
           </Text>
         </View>
         <View>
@@ -90,10 +91,28 @@ const Activity = () => {
               justifyContent: "space-between",
               alignItems: "center",
               padding: 10,
+              marginTop: 10,
+            }}
+          >
+            <View>
+              <Text>Toronto</Text>
+            </View>
+            <View>
+              <FontAwesome name="long-arrow-right" size={35} color="black" />
+            </View>
+            <View>
+              <Text>Brampton</Text>
+            </View>
+          </View>
+          <View
+            style={{
+              flexDirection: "row",
+              justifyContent: "space-between",
+              alignItems: "center",
+              padding: 10,
               borderWidth: 1,
               borderColor: "#9E9990",
               borderRadius: 5,
-              marginTop: 10,
             }}
           >
             <Image
@@ -102,7 +121,95 @@ const Activity = () => {
               }}
               style={{
                 width: "100%",
-                height: 300,
+                height: 190,
+                resizeMode: "contain",
+              }}
+            />
+          </View>
+          <View
+            style={{
+              flexDirection: "row",
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}
+          >
+            <View>
+              <Text
+                style={{
+                  fontSize: 15,
+                  fontWeight: "300",
+                  color: "#000",
+                }}
+              >
+                Brampton (Canada)
+              </Text>
+              <Text
+                style={{
+                  fontSize: 15,
+                  fontWeight: "300",
+                  color: "#000",
+                }}
+              >
+                $14.00
+              </Text>
+            </View>
+            <View>
+              <Text
+                style={{
+                  fontWeight: "300",
+                }}
+              >
+                12/12/2020
+              </Text>
+              <Text
+                style={{
+                  textAlign: "right",
+                  fontWeight: "300",
+                }}
+              >
+                15 min
+              </Text>
+            </View>
+          </View>
+        </View>
+        <View>
+          <View
+            style={{
+              flexDirection: "row",
+              justifyContent: "space-between",
+              alignItems: "center",
+              padding: 10,
+              marginTop: 30,
+            }}
+          >
+            <View>
+              <Text>Surrey</Text>
+            </View>
+            <View>
+              <FontAwesome name="long-arrow-right" size={35} color="black" />
+            </View>
+            <View>
+              <Text>Vancouver</Text>
+            </View>
+          </View>
+          <View
+            style={{
+              flexDirection: "row",
+              justifyContent: "space-between",
+              alignItems: "center",
+              padding: 10,
+              borderWidth: 1,
+              borderColor: "#9E9990",
+              borderRadius: 5,
+            }}
+          >
+            <Image
+              source={{
+                uri: "https://www.uberpeople.net/attachments/954f44de-414c-492f-9d92-36ad8334f40e-jpeg.404840/",
+              }}
+              style={{
+                width: "100%",
+                height: 190,
                 resizeMode: "cover",
               }}
             />
@@ -117,31 +224,38 @@ const Activity = () => {
             <View>
               <Text
                 style={{
-                  fontSize: 20,
-                  fontWeight: "500",
+                  fontSize: 15,
+                  fontWeight: "300",
                   color: "#000",
                 }}
               >
-                Brampton (Canada)
+                Vancouver (Canada)
               </Text>
               <Text
                 style={{
-                  fontSize: 20,
-                  fontWeight: "500",
+                  fontSize: 15,
+                  fontWeight: "300",
                   color: "#000",
                 }}
               >
-                $14.00
+                $20.00
               </Text>
             </View>
-            <View style={{}}>
-              <Text>12/12/2020</Text>
+            <View>
+              <Text
+                style={{
+                  fontWeight: "300",
+                }}
+              >
+                18/12/2022
+              </Text>
               <Text
                 style={{
                   textAlign: "right",
+                  fontWeight: "300",
                 }}
               >
-                15 min
+                30 min
               </Text>
             </View>
           </View>

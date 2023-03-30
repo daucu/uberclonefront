@@ -25,6 +25,7 @@ const Profile = () => {
         style={{
           flex: 1,
           padding: 10,
+          marginTop: 30,
         }}
       >
         <Text

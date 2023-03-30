@@ -41,7 +41,11 @@ const Signup = () => {
   };
 
   return (
-    <ScrollView>
+    <ScrollView
+      style={{
+        backgroundColor: "white",
+      }}
+    >
       <View
         style={{
           flex: 1,

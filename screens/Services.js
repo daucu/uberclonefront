@@ -56,6 +56,7 @@ const Services = () => {
         style={{
           flex: 1,
           padding: 10,
+          marginTop: 30,
         }}
       >
         <Text
@@ -88,14 +89,14 @@ const Services = () => {
             padding: 10,
           }}
         >
-          <View style={tw`bg-gray-200 p-4  max-w-[120px] rounded-[15px]`}>
+          <View style={tw`bg-gray-200 p-4  max-w-[100px] rounded-[15px]`}>
             <Image
               source={{
                 uri: "https://www.elluminatiinc.com/wp-content/uploads/2020/06/ubrapsrc/ubrapsrc4.png",
               }}
               style={{
-                width: 60,
-                height: 60,
+                width: 40,
+                height: 40,
                 borderRadius: 10,
                 resizeMode: "cover",
                 alignSelf: "center",
@@ -103,22 +104,22 @@ const Services = () => {
             />
             <Text
               style={{
-                fontSize: 14,
-                marginTop: 6,
+                fontSize: 10,
+                marginTop: 5,
                 textAlign: "center",
               }}
             >
               Expert Driver
             </Text>
           </View>
-          <View style={tw`bg-gray-200  max-w-[120px]  p-4  rounded-[15px]`}>
+          <View style={tw`bg-gray-200  max-w-[100px]  p-4  rounded-[15px]`}>
             <Image
               source={{
                 uri: "https://www.v3cube.com/images/uber-taxi-clone-latest/taxi-app_.png",
               }}
               style={{
-                width: 90,
-                height: 60,
+                width: 70,
+                height: 40,
                 borderRadius: 10,
                 resizeMode: "cover",
                 alignSelf: "center",
@@ -126,22 +127,22 @@ const Services = () => {
             />
             <Text
               style={{
-                fontSize: 14,
-                marginTop: 6,
+                fontSize: 10,
+                marginTop: 5,
                 textAlign: "center",
               }}
             >
               Locations
             </Text>
           </View>
-          <View style={tw`bg-gray-200 max-w-[120px] p-4  rounded-[15px]`}>
+          <View style={tw`bg-gray-200 max-w-[100px] p-4  rounded-[15px]`}>
             <Image
               source={{
                 uri: "https://www.uberappclone.com/images/uber-clone-taxi-business.png",
               }}
               style={{
-                width: 60,
-                height: 60,
+                width: 40,
+                height: 40,
                 borderRadius: 10,
                 resizeMode: "cover",
                 alignSelf: "center",
@@ -149,8 +150,8 @@ const Services = () => {
             />
             <Text
               style={{
-                fontSize: 14,
-                marginTop: 6,
+                fontSize: 10,
+                marginTop: 5,
                 textAlign: "center",
               }}
             >
@@ -176,8 +177,8 @@ const Services = () => {
                 uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGes3KJQOyHxCwl4PdjeMAYX1KFVb2ERsIa7RQ9JrPouLlxTn922fDu1vLJaPL0VwcJU4&usqp=CAU",
               }}
               style={{
-                width: 60,
-                height: 60,
+                width: 40,
+                height: 40,
                 borderRadius: 10,
                 resizeMode: "cover",
                 alignSelf: "center",
@@ -192,8 +193,8 @@ const Services = () => {
                 uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRWlqutnvsUHZ88HLkF_vO0X2MLfGQiSBlbbWtQG0ylTqEGx56GhsfxQebP4kWN6w9iR4&usqp=CAU",
               }}
               style={{
-                width: 60,
-                height: 60,
+                width: 40,
+                height: 40,
                 borderRadius: 10,
                 resizeMode: "cover",
                 alignSelf: "center",
@@ -208,8 +209,8 @@ const Services = () => {
                 uri: "https://www.relinns.com/wp-content/uploads/2018/10/uber-taxi-bn.jpg",
               }}
               style={{
-                width: 60,
-                height: 60,
+                width: 40,
+                height: 40,
                 borderRadius: 10,
                 resizeMode: "cover",
                 alignSelf: "center",
@@ -224,8 +225,8 @@ const Services = () => {
                 uri: "https://thumbs.dreamstime.com/b/taxi-booking-online-order-car-mobile-phone-app-idea-transportation-internet-connection-isolated-flat-vector-illustration-134590015.jpg",
               }}
               style={{
-                width: 60,
-                height: 60,
+                width: 40,
+                height: 40,
                 borderRadius: 10,
                 resizeMode: "cover",
                 alignSelf: "center",

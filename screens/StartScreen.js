@@ -18,8 +18,10 @@ const StartScreen = () => {
         <Image
           source={require("../assets/f.webp")}
           style={{
-            width: 400,
-            height: 400,
+            width: 300,
+            height: 300,
+            margin: "auto",
+            alignSelf: "center",
             resizeMode: "contain",
           }}
         />

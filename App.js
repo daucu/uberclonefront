@@ -19,7 +19,7 @@ export default function App() {
   // disable yellow warnings
   return (
     <Provider store={Store}>
-      <StatusBar hidden />
+      <StatusBar  style="dark" />
       <NavigationContainer>
         <SafeAreaProvider>
           <Stack.Navigator>
@@ -55,14 +55,14 @@ export default function App() {
               name="Body"
               component={Body}
               options={{
-                headerShown: false,
+                headerShown: true,
               }}
             />
             <Stack.Screen
               name="Profile"
               component={Profile}
               options={{
-                headerShown: false,
+                headerShown: true,
               }}
             />
             <Stack.Screen
@@ -76,14 +76,14 @@ export default function App() {
               name="ActiviytScreen"
               component={Activity}
               options={{
-                headerShown: false,
+                headerShown: true,
               }}
             />
             <Stack.Screen
               name="Services"
               component={Services}
               options={{
-                headerShown: false,
+                headerShown: true,
               }}
             />
           </Stack.Navigator>
