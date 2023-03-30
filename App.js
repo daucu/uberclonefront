@@ -14,12 +14,13 @@ import Profile from "./screens/Profile";
 import MainScreen from "./screens/MainScreen";
 import Activity from "./screens/Activity";
 import Services from "./screens/Services";
+import Account from "./screens/Account";
 export default function App() {
   const Stack = createNativeStackNavigator();
   // disable yellow warnings
   return (
     <Provider store={Store}>
-      <StatusBar  style="dark" />
+      <StatusBar style="dark" />
       <NavigationContainer>
         <SafeAreaProvider>
           <Stack.Navigator>
@@ -82,6 +83,13 @@ export default function App() {
             <Stack.Screen
               name="Services"
               component={Services}
+              options={{
+                headerShown: true,
+              }}
+            />
+            <Stack.Screen
+              name="Account"
+              component={Account}
               options={{
                 headerShown: true,
               }}

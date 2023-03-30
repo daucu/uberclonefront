@@ -94,7 +94,7 @@ const BottomTabNav = () => {
           headerShown: false,
           tabBarLabel: "Account",
           tabBarIcon: ({ color }) => (
-            <AntDesign name="user" color={color} size={26} />
+            <FontAwesome5 name="user" color={color} size={26} />
           ),
         }}
       />

@@ -14,7 +14,9 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import tw from "twrnc";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
+import { useNavigation } from "@react-navigation/native";
 const Profile = () => {
+  const navigate = useNavigation();
   return (
     <ScrollView
       style={{
@@ -74,7 +76,8 @@ const Profile = () => {
               </Text>
             </View>
           </View>
-          <View
+          <TouchableOpacity
+            onPress={() => navigate.navigate("Account")}
             style={tw`bg-gray-200 p-2 rounded-lg w-[80px] h-[80px] justify-center items-center rounded-full`}
           >
             {/* <Icon name="user" type="antdesign" size={20} /> */}
@@ -85,7 +88,7 @@ const Profile = () => {
               }}
               style={{ width: 65, height: 65, borderRadius: 65 }}
             />
-          </View>
+          </TouchableOpacity>
         </View>
         <View
           style={{

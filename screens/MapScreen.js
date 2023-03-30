@@ -179,6 +179,7 @@ const MapScreen = () => {
               placeholder="From"
               style={{
                 width: 300,
+                backgroundColor: "#efefef",
               }}
             />
           </View>
@@ -188,6 +189,7 @@ const MapScreen = () => {
               style={{
                 width: 300,
                 marginTop: 50,
+                backgroundColor: "#efefef",
               }}
             />
           </View>
