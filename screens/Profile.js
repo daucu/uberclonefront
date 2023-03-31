@@ -147,7 +147,9 @@ const Profile = () => {
               Wallet
             </Text>
           </TouchableOpacity>
-          <TouchableOpacity style={tw`bg-gray-200 p-2 rounded-lg w-[80px]`}>
+          <TouchableOpacity style={tw`bg-gray-200 p-2 rounded-lg w-[80px]`}
+            onPress={() => navigate.navigate("ActiviytScreen")}
+          >
             <View
               style={{
                 display: "flex",

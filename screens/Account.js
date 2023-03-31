@@ -10,6 +10,7 @@ const Account = () => {
       style={{
         backgroundColor: "white",
         padding: 20,
+        
       }}
     >
       <View>
