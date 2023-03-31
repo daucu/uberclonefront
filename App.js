@@ -4,7 +4,7 @@ import { Provider } from "react-redux";
 import HomeScreen from "./screens/HomeScreen";
 import { Store } from "./Store";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import { NavigationContainer, useNavigation } from "@react-navigation/native";
+import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import MapScreen from "./screens/MapScreen";
 import Login from "./Auth/Login";
@@ -17,16 +17,11 @@ import Services from "./screens/Services";
 import Account from "./screens/Account";
 import Help from "./screens/Help";
 import Wallet from "./screens/Wallet";
-import { API } from "./constant/API";
-import { useState } from "react";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { useEffect } from "react";
 
 export default function App() {
   const Stack = createNativeStackNavigator();
   // disable yellow warnings
 
-  const [fetcheduser, setFetcheduser] = useState({});
   // code to get user profile
   // const getProfile = async () => {
   //   const token = await AsyncStorage.getItem("token");
@@ -52,7 +47,6 @@ export default function App() {
   //   getProfile();
   // }, []);
 
-  const [islogin, setIslogin] = useState(true);
   return (
     <Provider store={Store}>
       <StatusBar style="dark" />
