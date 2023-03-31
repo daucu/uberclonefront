@@ -42,7 +42,7 @@ const Profile = () => {
     const fetchedUser = await response.json();
     if (fetchedUser.status === "found") {
       setFetcheduser(fetchedUser.data);
-      console.log("fetchedUser", fetchedUser.data);
+      // console.log("fetchedUser", fetchedUser.data);
     } else {
       navigate.navigate("Login");
     }

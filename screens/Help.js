@@ -16,106 +16,16 @@ const Help = () => {
         <Text style={{ fontSize: 30, fontWeight: "500" }}>
           How to use the app?
         </Text>
-        <Text
-          style={{
-            fontSize: 20,
-            fontWeight: "400",
-            color: "gray",
-            marginTop: 10,
-          }}
-        >
-          1. Add your pick up location
-        </Text>
-        <Text
-          style={{
-            fontSize: 20,
-            fontWeight: "400",
-            color: "gray",
-            marginTop: 10,
-          }}
-        >
-          2. Add your drop off location
-        </Text>
-        <Text
-          style={{
-            fontSize: 20,
-            fontWeight: "400",
-            color: "gray",
-            marginTop: 10,
-          }}
-        >
-          3. Select your car type
-        </Text>
-        <Text
-          style={{
-            fontSize: 20,
-            fontWeight: "400",
-            color: "gray",
-            marginTop: 10,
-          }}
-        >
-          4. Select price range
-        </Text>
-        <Text
-          style={{
-            fontSize: 20,
-            fontWeight: "400",
-            color: "gray",
-            marginTop: 10,
-          }}
-        >
-          5. Select your payment method
-        </Text>
-        <Text
-          style={{
-            fontSize: 20,
-            fontWeight: "400",
-            color: "gray",
-            marginTop: 10,
-          }}
-        >
-          6. Confirm your booking
-        </Text>
-        <Text
-          style={{
-            fontSize: 20,
-            fontWeight: "400",
-            color: "gray",
-            marginTop: 10,
-          }}
-        >
-          7. Wait for your driver to arrive
-        </Text>
-        <Text
-          style={{
-            fontSize: 20,
-            fontWeight: "400",
-            color: "gray",
-            marginTop: 10,
-          }}
-        >
-          8. Driver will take the OTP from you
-        </Text>
-        <Text
-          style={{
-            fontSize: 20,
-            fontWeight: "400",
-            color: "gray",
-            marginTop: 10,
-          }}
-        >
-          9. Enjoy your ride
-        </Text>
-        <Text
-          style={{
-            fontSize: 20,
-            fontWeight: "400",
-            color: "gray",
-            marginTop: 10,
-          }}
-        >
-          10. Rate your driver
-        </Text>
+        <Text style={styles.inp}>1. Add your pick up location</Text>
+        <Text style={styles.inp}>2. Add your drop off location</Text>
+        <Text style={styles.inp}>3. Select your car type</Text>
+        <Text style={styles.inp}>4. Select price range</Text>
+        <Text style={styles.inp}>5. Select your payment method</Text>
+        <Text style={styles.inp}>6. Confirm your booking</Text>
+        <Text style={styles.inp}>7. Wait for your driver to arrive</Text>
+        <Text style={styles.inp}>8. Driver will take the OTP from you</Text>
+        <Text style={styles.inp}>9. Enjoy your ride</Text>
+        <Text style={styles.inp}>10. Rate your driver</Text>
       </View>
       <View>
         <Text style={{ fontSize: 25, fontWeight: "400", marginTop: 20 }}>
@@ -146,9 +56,16 @@ const Help = () => {
           <View
             style={{
               width: 300,
+              paddingBottom: 50,
             }}
           >
-            <Text style={{ fontSize: 20, fontWeight: "300", marginTop: 20 }}>
+            <Text
+              style={{
+                fontSize: 17,
+                fontWeight: "300",
+                marginTop: 20,
+              }}
+            >
               If you have any questions, please talk to our customer service
             </Text>
             <TouchableOpacity
@@ -157,12 +74,12 @@ const Help = () => {
                 padding: 10,
                 borderRadius: 7,
                 marginTop: 20,
-            }}
+              }}
             >
               <Text
                 style={{
                   color: "white",
-                  fontSize: 20,
+                  fontSize: 18,
                   fontWeight: "400",
                   textAlign: "center",
                 }}
@@ -179,4 +96,11 @@ const Help = () => {
 
 export default Help;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  inp: {
+    fontSize: 17,
+    fontWeight: "400",
+    color: "gray",
+    marginTop: 10,
+  },
+});

@@ -4,7 +4,7 @@ import { Provider } from "react-redux";
 import HomeScreen from "./screens/HomeScreen";
 import { Store } from "./Store";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import { NavigationContainer } from "@react-navigation/native";
+import { NavigationContainer, useNavigation } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import MapScreen from "./screens/MapScreen";
 import Login from "./Auth/Login";
@@ -17,9 +17,42 @@ import Services from "./screens/Services";
 import Account from "./screens/Account";
 import Help from "./screens/Help";
 import Wallet from "./screens/Wallet";
+import { API } from "./constant/API";
+import { useState } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useEffect } from "react";
+
 export default function App() {
   const Stack = createNativeStackNavigator();
   // disable yellow warnings
+
+  const [fetcheduser, setFetcheduser] = useState({});
+  // code to get user profile
+  // const getProfile = async () => {
+  //   const token = await AsyncStorage.getItem("token");
+  //   console.log("TOKEN->", token);
+  //   const user = await AsyncStorage.getItem("user");
+  //   const id = JSON.parse(user).id;
+  //   const response = await fetch(`${API}/getuser/${id}`, {
+  //     method: "GET",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       Authorization: `Bearer ${token}`,
+  //     },
+  //   });
+  //   const fetchedUser = await response.json();
+  //   if (fetchedUser.status === "found") {
+  //     setFetcheduser(fetchedUser.data);
+  //     console.log("fetchedUser", fetchedUser.data);
+  //   } else {
+  //     navigate.navigate("Login");
+  //   }
+  // };
+  // useEffect(() => {
+  //   getProfile();
+  // }, []);
+
+  const [islogin, setIslogin] = useState(true);
   return (
     <Provider store={Store}>
       <StatusBar style="dark" />
@@ -33,6 +66,14 @@ export default function App() {
                 headerShown: false,
               }}
             />
+            <Stack.Screen
+              name="MainScreen"
+              component={MainScreen}
+              options={{
+                headerShown: false,
+              }}
+            />
+
             <Stack.Screen
               name="MapScreen"
               component={MapScreen}
@@ -68,13 +109,7 @@ export default function App() {
                 headerShown: true,
               }}
             />
-            <Stack.Screen
-              name="MainScreen"
-              component={MainScreen}
-              options={{
-                headerShown: false,
-              }}
-            />
+
             <Stack.Screen
               name="ActiviytScreen"
               component={Activity}
