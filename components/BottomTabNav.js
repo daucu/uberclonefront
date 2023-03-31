@@ -13,8 +13,6 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 const BottomTabNav = () => {
   // const Tab = createMaterialBottomTabNavigator();
   const Tab = createBottomTabNavigator();
-  // how to add icon in bottom tab navigator
-  // https://reactnavigation.org/docs/material-bottom-tab-navigator/
 
   return (
     <Tab.Navigator

@@ -15,8 +15,42 @@ import tw from "twrnc";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
 import { useNavigation } from "@react-navigation/native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { API } from "../constant/API";
+import { useState } from "react";
+import { useEffect } from "react";
 const Profile = () => {
   const navigate = useNavigation();
+  const [fetcheduser, setFetcheduser] = useState({});
+
+  // code to get user profile
+  const getProfile = async () => {
+    const token = await AsyncStorage.getItem("token");
+    // console.log("TOKEN->", token);
+    if (!token) return navigate.navigate("Login");
+    const user = await AsyncStorage.getItem("user");
+    const id = JSON.parse(user).id;
+    // console.log("USER_ID->", id);
+
+    const response = await fetch(`${API}/getuser/${id}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const fetchedUser = await response.json();
+    if (fetchedUser.status === "found") {
+      setFetcheduser(fetchedUser.data);
+      console.log("fetchedUser", fetchedUser.data);
+    } else {
+      navigate.navigate("Login");
+    }
+  };
+  // getProfile();
+  useEffect(() => {
+    getProfile();
+  }, []);
 
   return (
     <ScrollView
@@ -57,7 +91,7 @@ const Profile = () => {
                 color: "black",
               }}
             >
-              UserName
+              {fetcheduser && fetcheduser.name ? fetcheduser.name : "Name"}
             </Text>
             <View
               style={tw`flex-row items-center  justify-evenly mt-2 bg-gray-200 p-2 rounded-md   `}
@@ -123,8 +157,9 @@ const Profile = () => {
               Help
             </Text>
           </TouchableOpacity>
-          <TouchableOpacity style={tw`bg-gray-200 p-2 rounded-lg w-[80px]`}
-          onPress={() => navigate.navigate("Wallet")}
+          <TouchableOpacity
+            style={tw`bg-gray-200 p-2 rounded-lg w-[80px]`}
+            onPress={() => navigate.navigate("Wallet")}
           >
             <View
               style={{
@@ -147,7 +182,8 @@ const Profile = () => {
               Wallet
             </Text>
           </TouchableOpacity>
-          <TouchableOpacity style={tw`bg-gray-200 p-2 rounded-lg w-[80px]`}
+          <TouchableOpacity
+            style={tw`bg-gray-200 p-2 rounded-lg w-[80px]`}
             onPress={() => navigate.navigate("ActiviytScreen")}
           >
             <View

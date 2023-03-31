@@ -12,10 +12,25 @@ import tw from "twrnc";
 import ImgSlider from "../components/ImgSlider";
 import { FlatList } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
 const Body = () => {
   const navigation = useNavigation();
 
   console.disableYellowBox = true;
+
+  // code to fetch data from async storage
+  const getData = async () => {
+    try {
+      const jsonValue = await AsyncStorage.getItem("user");
+      // console.log("USER->", jsonValue);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  getData();
+
   const data2 = [
     {
       id: 1,

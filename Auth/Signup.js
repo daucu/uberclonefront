@@ -7,13 +7,11 @@ import {
   TextInput,
   TouchableOpacity,
 } from "react-native";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import tw from "twrnc";
 import PhoneInput from "react-native-phone-number-input";
 import { useNavigation } from "@react-navigation/native";
-import axios from "axios";
 import { API } from "../constant/API";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Signup = () => {
   const navigate = useNavigation();
@@ -23,35 +21,30 @@ const Signup = () => {
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
 
-  const handlesignup = () => {
-    // console.log(name, email, address, phone, password);
-    // axios
-    //   .post(`${API}/signup`, {
-    //     name: name,
-    //     email: email,
-    //     address: address,
-    //     phone: phone,
-    //     password: password,
-    //   })
-    //   .then((res) => {
-    //     console.log(res.data);
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
+  const handlesignup = async () => {
+    // fetch method to post data to server
+    const resp = await fetch(`${API}/signup`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: name,
+        email: email,
+        address: address,
+        phone: phone,
+        password: password,
+      }),
+    });
+    const data = await resp.json();
+    // console.log(data);
 
-    AsyncStorage.setItem(
-      "user",
-      JSON.stringify({ name, email, address, phone, password })
-    );
-
-    AsyncStorage.getItem("user")
-      .then((res) => {
-        console.log(JSON.parse(res));
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    if (data.status === "success") {
+      alert("Signup Successfull");
+      navigate.navigate("Login");
+    } else {
+      alert(data.message);
+    }
   };
 
   return (

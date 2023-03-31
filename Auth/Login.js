@@ -5,6 +5,7 @@ import {
   TouchableOpacity,
   View,
   Image,
+  TextInput,
 } from "react-native";
 import React, { useState } from "react";
 import tw from "twrnc";
@@ -12,16 +13,37 @@ import { Icon } from "react-native-elements/dist/icons/Icon";
 import PhoneInput from "react-native-phone-number-input";
 import { useNavigation } from "@react-navigation/native";
 import { API } from "../constant/API";
-import axios from "axios";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Login = () => {
   const navigate = useNavigation();
   const [value, setValue] = useState();
   const [formattedValue, setFormattedValue] = useState("");
+  const [password, setPassword] = useState("");
 
-  const handleLogin = () => {
-    console.log(value);
-    console.log(formattedValue);
+  const handleLogin = async () => {
+    // console.log(value, password);
+    const response = await fetch(`${API}/login/mobile`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        phone: value,
+        password: password,
+      }),
+    });
+    const data = await response.json();
+    // console.log(data);
+
+    if (data.status === "success") {
+      await AsyncStorage.setItem("token", data.token);
+      await AsyncStorage.setItem("user", JSON.stringify(data.user));
+      navigate.navigate("MainScreen");
+    } else {
+      alert("Invalid Credentials");
+      navigate.navigate("Login");
+    }
   };
 
   return (
@@ -70,6 +92,25 @@ const Login = () => {
             onChangeFormattedText={(text) => {
               setFormattedValue(text);
             }}
+          />
+        </View>
+        <View
+          style={{
+            marginTop: 20,
+          }}
+        >
+          <TextInput
+            placeholder="Password"
+            style={{
+              borderWidth: 1,
+              borderColor: "#e1dede",
+              padding: 10,
+              borderRadius: 5,
+              fontSize: 18,
+            }}
+            // secureTextEntry={true}
+            onChangeText={(text) => setPassword(text)}
+            value={password}
           />
         </View>
         <View
@@ -140,8 +181,8 @@ const Login = () => {
         </View>
         <View>
           <TouchableOpacity
-            onPress={() => navigate.navigate("MainScreen")}
-            // onPress={handleLogin}
+            // onPress={() => navigate.navigate("MainScreen")}
+            onPress={handleLogin}
             style={{
               backgroundColor: "black",
               padding: 10,

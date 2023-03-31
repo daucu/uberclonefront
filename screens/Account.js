@@ -2,15 +2,42 @@ import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 import React, { useState } from "react";
 import { ScrollView } from "react-native";
 import { TextInput } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useEffect } from "react";
+import { API } from "../constant/API";
 
 const Account = () => {
   const [active, setActive] = useState(false);
+
+  const [data, setData] = useState({});
+
+  const getData = async () => {
+    try {
+      const jsonValue = await AsyncStorage.getItem("user");
+      const ID = JSON.parse(jsonValue).id;
+      // console.log(ID);
+
+      const response = await fetch(`${API}/getuser/${ID}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await response.json();
+      setData(data.data);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+  useEffect(() => {
+    getData();
+  }, []);
+
   return (
     <ScrollView
       style={{
         backgroundColor: "white",
         padding: 20,
-        
       }}
     >
       <View>
@@ -114,7 +141,7 @@ const Account = () => {
                 marginTop: 20,
               }}
             >
-              <View>
+              <View style={styles.cont}>
                 <Text
                   style={{
                     fontSize: 17,
@@ -125,11 +152,7 @@ const Account = () => {
                 </Text>
                 <TextInput style={styles.input} />
               </View>
-              <View
-                style={{
-                  marginTop: 11,
-                }}
-              >
+              <View style={styles.cont}>
                 <Text
                   style={{
                     fontSize: 17,
@@ -140,11 +163,18 @@ const Account = () => {
                 </Text>
                 <TextInput style={styles.input} />
               </View>
-              <View
-                style={{
-                  marginTop: 20,
-                }}
-              >
+              <View style={styles.cont}>
+                <Text
+                  style={{
+                    fontSize: 17,
+                    fontWeight: 400,
+                  }}
+                >
+                  Address
+                </Text>
+                <TextInput style={styles.input} />
+              </View>
+              <View style={styles.cont}>
                 <Text
                   style={{
                     fontSize: 17,
@@ -155,6 +185,7 @@ const Account = () => {
                 </Text>
                 <TextInput style={styles.input} />
               </View>
+
               <View
                 style={{
                   marginTop: 50,
@@ -188,85 +219,21 @@ const Account = () => {
                 marginTop: 20,
               }}
             >
-              <View>
-                <Text
-                  style={{
-                    fontSize: 17,
-                    fontWeight: 400,
-                  }}
-                >
-                  Name
-                </Text>
-                <Text
-                  style={{
-                    fontSize: 17,
-                    fontWeight: 500,
-                    color: "gray",
-                    // borderbottim
-                    borderBottomWidth: 0.5,
-                    borderColor: "gray",
-                    paddingBottom: 8,
-                    marginTop: 4,
-                  }}
-                >
-                  Username
-                </Text>
+              <View style={styles.maincont}>
+                <Text style={styles.inputcontainer}>Name</Text>
+                <Text style={styles.datainp}>{data.name}</Text>
               </View>
-              <View
-                style={{
-                  marginTop: 11,
-                }}
-              >
-                <Text
-                  style={{
-                    fontSize: 17,
-                    fontWeight: 400,
-                  }}
-                >
-                  Email
-                </Text>
-                <Text
-                  style={{
-                    fontSize: 17,
-                    fontWeight: 500,
-                    color: "gray",
-                    // borderbottim
-                    borderBottomWidth: 0.5,
-                    borderColor: "gray",
-                    paddingBottom: 8,
-                    marginTop: 4,
-                  }}
-                >
-                  Email
-                </Text>
+              <View style={styles.maincont}>
+                <Text style={styles.inputcontainer}>Email</Text>
+                <Text style={styles.datainp}>{data.email}</Text>
               </View>
-              <View
-                style={{
-                  marginTop: 20,
-                }}
-              >
-                <Text
-                  style={{
-                    fontSize: 17,
-                    fontWeight: 400,
-                  }}
-                >
-                  Phone
-                </Text>
-                <Text
-                  style={{
-                    fontSize: 17,
-                    fontWeight: 500,
-                    color: "gray",
-                    // borderbottim
-                    borderBottomWidth: 0.5,
-                    borderColor: "gray",
-                    paddingBottom: 8,
-                    marginTop: 4,
-                  }}
-                >
-                  7845125869
-                </Text>
+              <View style={styles.maincont}>
+                <Text style={styles.inputcontainer}>Address</Text>
+                <Text style={styles.datainp}>{data.address}</Text>
+              </View>
+              <View style={styles.maincont}>
+                <Text style={styles.inputcontainer}>Phone</Text>
+                <Text style={styles.datainp}>{data.phone}</Text>
               </View>
             </View>
           )}
@@ -278,11 +245,29 @@ const Account = () => {
 
 export default Account;
 const styles = StyleSheet.create({
+  cont: {
+    margin: 10,
+  },
+  maincont: {
+    margin: 10,
+  },
+  inputcontainer: {
+    fontSize: 17,
+    fontWeight: 400,
+  },
+  datainp: {
+    fontSize: 17,
+    fontWeight: 400,
+    color: "gray",
+    padding: 5,
+    marginTop: 10,
+    borderBottomWidth: 0.9,
+    borderBottomColor: "gray",
+  },
   input: {
-    height: 40,
-    marginTop: 1,
+    height: 50,
     fontSize: 17,
     color: "gray",
-    borderBottomWidth: 0.5,
+    borderBottomWidth: 0.9,
   },
 });
