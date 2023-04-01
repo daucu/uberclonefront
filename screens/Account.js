@@ -64,7 +64,7 @@ const Account = () => {
               onPress={() => {
                 AsyncStorage.removeItem("token")
                   .then(() => {
-                    navigate.navigate("Login");
+                    navigate.navigate("HomeScreen");
                   })
                   .catch((e) => {
                     console.log(e);
