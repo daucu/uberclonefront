@@ -84,11 +84,7 @@ const Profile = () => {
             justifyContent: "space-between",
           }}
         >
-          <View
-          style={{
-
-          }}
-          >
+          <View style={{}}>
             <Text
               style={{
                 fontSize: 22,
@@ -117,13 +113,13 @@ const Profile = () => {
           </View>
           <TouchableOpacity
             onPress={() => navigate.navigate("Account")}
-            style={tw`bg-gray-200 p-2 rounded-lg w-[80px] h-[80px] justify-center items-center rounded-full`}
+            style={tw`  p-2 rounded-lg w-[80px] h-[80px] justify-center items-center rounded-full`}
           >
             {/* <Icon name="user" type="antdesign" size={20} /> */}
             {/* user image */}
             <Image
               source={{
-                uri: "https://i.pinimg.com/474x/0a/a8/58/0aa8581c2cb0aa948d63ce3ddad90c81.jpg",
+                uri: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
               }}
               style={{ width: 65, height: 65, borderRadius: 65 }}
             />
@@ -236,6 +232,37 @@ const Profile = () => {
                 }}
               >
                 Messages
+              </Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => navigate.navigate("Change Password")}
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              padding: 20,
+            }}
+          >
+            <View
+              style={{
+                width: 50,
+              }}
+            >
+              <MaterialCommunityIcons
+                name="shield-key"
+                size={27}
+                color="black"
+              />
+            </View>
+            <View>
+              <Text
+                style={{
+                  fontSize: 20,
+                  color: "black",
+                }}
+              >
+                Change Password
               </Text>
             </View>
           </TouchableOpacity>

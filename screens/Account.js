@@ -6,12 +6,17 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useEffect } from "react";
 import { API } from "../constant/API";
 import { useNavigation } from "@react-navigation/native";
+import axios from "axios";
 
 const Account = () => {
   const navigate = useNavigation();
   const [active, setActive] = useState(false);
-
   const [data, setData] = useState({});
+
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [address, setAddress] = useState("");
+  const [phone, setPhone] = useState("");
 
   const getData = async () => {
     try {
@@ -27,13 +32,43 @@ const Account = () => {
       });
       const data = await response.json();
       setData(data.data);
-    } catch (e) {
+
+      setName(data.data.name);
+      setEmail(data.data.email);
+      setAddress(data.data.address);
+      setPhone(data.data.phone);
+    
+  } catch (e) {
       console.log(e);
     }
   };
   useEffect(() => {
     getData();
   }, []);
+
+  // code to update data
+  const updateData = async () => {
+    const jsonValue = await AsyncStorage.getItem("user");
+    const ID = JSON.parse(jsonValue).id;
+    const response = await fetch(`${API}/signup/update/${ID}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: name,
+        email: email,
+        address: address,
+        phone: phone,
+      }),
+    });
+    const data = await response.json();
+    console.log(data);
+    alert(data.message);
+    if (data.message === "User updated successfully") {
+      getData();
+    }
+  };
 
   return (
     <ScrollView
@@ -81,7 +116,7 @@ const Account = () => {
             height: 100,
             width: 100,
             borderRadius: 100,
-            backgroundColor: "red",
+            backgroundColor: "white",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -89,7 +124,7 @@ const Account = () => {
         >
           <Image
             source={{
-              uri: "https://i.pinimg.com/474x/0a/a8/58/0aa8581c2cb0aa948d63ce3ddad90c81.jpg",
+              uri: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
             }}
             style={{ width: 90, height: 90, borderRadius: 65 }}
           />
@@ -176,7 +211,12 @@ const Account = () => {
                 >
                   Name
                 </Text>
-                <TextInput style={styles.input} />
+                <TextInput
+                  style={styles.input}
+                  value={name}
+                  placeholder={data.name}
+                  onChangeText={(text) => setName(text)}
+                />
               </View>
               <View style={styles.cont}>
                 <Text
@@ -187,7 +227,12 @@ const Account = () => {
                 >
                   Email
                 </Text>
-                <TextInput style={styles.input} />
+                <TextInput
+                  style={styles.input}
+                  value={email}
+                  onChangeText={(text) => setEmail(text)}
+                  placeholder={data.email}
+                />
               </View>
               <View style={styles.cont}>
                 <Text
@@ -198,7 +243,12 @@ const Account = () => {
                 >
                   Address
                 </Text>
-                <TextInput style={styles.input} />
+                <TextInput
+                  style={styles.input}
+                  value={address}
+                  placeholder={data.address}
+                  onChangeText={(text) => setAddress(text)}
+                />
               </View>
               <View style={styles.cont}>
                 <Text
@@ -209,7 +259,12 @@ const Account = () => {
                 >
                   Phone
                 </Text>
-                <TextInput style={styles.input} />
+                <TextInput
+                  style={styles.input}
+                  value={phone}
+                  placeholder={data.phone}
+                  onChangeText={(text) => setPhone(text)}
+                />
               </View>
 
               <View
@@ -219,6 +274,7 @@ const Account = () => {
                 }}
               >
                 <TouchableOpacity
+                  onPress={updateData}
                   style={{
                     backgroundColor: "black",
                     padding: 2,

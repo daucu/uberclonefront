@@ -19,6 +19,7 @@ import Help from "./screens/Help";
 import Wallet from "./screens/Wallet";
 import { useState } from "react";
 import { CheckLogin } from "./Reducers/AuthReducer";
+import ChangePassword from "./screens/ChangePassword";
 
 export default function App() {
   const Stack = createNativeStackNavigator();
@@ -114,6 +115,13 @@ export default function App() {
               component={HomeScreen}
               options={{
                 headerShown: false,
+              }}
+            />
+            <Stack.Screen
+              name="Change Password"
+              component={ChangePassword}
+              options={{
+                headerShown: true,
               }}
             />
           </Stack.Navigator>
