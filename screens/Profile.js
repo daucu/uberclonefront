@@ -84,7 +84,11 @@ const Profile = () => {
             justifyContent: "space-between",
           }}
         >
-          <View>
+          <View
+          style={{
+
+          }}
+          >
             <Text
               style={{
                 fontSize: 22,

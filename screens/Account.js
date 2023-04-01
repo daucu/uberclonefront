@@ -91,7 +91,7 @@ const Account = () => {
             source={{
               uri: "https://i.pinimg.com/474x/0a/a8/58/0aa8581c2cb0aa948d63ce3ddad90c81.jpg",
             }}
-            style={{ width: 100, height: 100, borderRadius: 65 }}
+            style={{ width: 90, height: 90, borderRadius: 65 }}
           />
         </View>
         <View
@@ -215,6 +215,7 @@ const Account = () => {
               <View
                 style={{
                   marginTop: 50,
+                  marginBottom: 100,
                 }}
               >
                 <TouchableOpacity
