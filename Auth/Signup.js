@@ -12,8 +12,11 @@ import tw from "twrnc";
 import PhoneInput from "react-native-phone-number-input";
 import { useNavigation } from "@react-navigation/native";
 import { API } from "../constant/API";
+import { ActivityIndicator } from "react-native";
 
 const Signup = () => {
+  const [loading, setLoading] = useState(false);
+
   const navigate = useNavigation();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -22,6 +25,7 @@ const Signup = () => {
   const [password, setPassword] = useState("");
 
   const handlesignup = async () => {
+    setLoading(true);
     // fetch method to post data to server
     const resp = await fetch(`${API}/signup`, {
       method: "POST",
@@ -40,9 +44,11 @@ const Signup = () => {
     // console.log(data);
 
     if (data.status === "success") {
+      setLoading(false);
       alert("Signup Successfull");
       navigate.navigate("Login");
     } else {
+      setLoading(false);
       alert(data.message);
     }
   };
@@ -157,26 +163,59 @@ const Signup = () => {
             marginTop: 12,
           }}
         >
-          <TouchableOpacity
-            // onPress={() => navigate.navigate("Login")}
-            onPress={() => handlesignup()}
-            style={{
-              backgroundColor: "black",
-              padding: 10,
-              borderRadius: 5,
-              marginTop: 20,
-            }}
-          >
-            <Text
+          {loading === true ? (
+            <TouchableOpacity
+              disabled={true}
               style={{
-                color: "white",
-                fontSize: 18,
-                textAlign: "center",
+                backgroundColor: "black",
+                padding: 10,
+                borderRadius: 5,
+                marginTop: 20,
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "center",
+                alignItems: "center",
               }}
             >
-              Sign Up
-            </Text>
-          </TouchableOpacity>
+              <ActivityIndicator
+                size="small"
+                color="white"
+                style={{
+                  marginRight: 10,
+                }}
+              />
+              <Text
+                style={{
+                  color: "white",
+                  fontSize: 18,
+                  textAlign: "center",
+                }}
+              >
+                Sign Up...
+              </Text>
+            </TouchableOpacity>
+          ) : (
+            <TouchableOpacity
+              // onPress={() => navigate.navigate("Login")}
+              onPress={() => handlesignup()}
+              style={{
+                backgroundColor: "black",
+                padding: 10,
+                borderRadius: 5,
+                marginTop: 20,
+              }}
+            >
+              <Text
+                style={{
+                  color: "white",
+                  fontSize: 18,
+                  textAlign: "center",
+                }}
+              >
+                Sign Up
+              </Text>
+            </TouchableOpacity>
+          )}
         </View>
       </View>
     </ScrollView>

@@ -6,6 +6,7 @@ import {
   View,
   Image,
   TextInput,
+  ActivityIndicator,
 } from "react-native";
 import React, { useState } from "react";
 import tw from "twrnc";
@@ -19,12 +20,14 @@ import { useEffect } from "react";
 import { CheckLogin } from "../Reducers/AuthReducer";
 
 const Login = () => {
+  const [loading, setLoading] = useState(false);
+
   const navigate = useNavigation();
   useEffect(() => {
     console.log(loggedIn);
     if (loggedIn) {
       // navigate.navigate("MainScreen");
-      alert(loggedIn)
+      alert(loggedIn);
     }
   }, [loggedIn]);
 
@@ -40,6 +43,7 @@ const Login = () => {
   }, []);
 
   const handleLogin = async () => {
+    setLoading(true);
     // console.log(value, password);
     const response = await fetch(`${API}/login/mobile`, {
       method: "POST",
@@ -55,10 +59,12 @@ const Login = () => {
     // console.log(data);
 
     if (data.status === "success") {
+      setLoading(false);
       await AsyncStorage.setItem("token", data.token);
       await AsyncStorage.setItem("user", JSON.stringify(data.user));
       navigate.navigate("MainScreen");
     } else {
+      setLoading(false);
       alert("Invalid Credentials");
       navigate.navigate("Login");
     }
@@ -198,26 +204,57 @@ const Login = () => {
           </TouchableOpacity>
         </View>
         <View>
-          <TouchableOpacity
-            // onPress={() => navigate.navigate("MainScreen")}
-            onPress={handleLogin}
-            style={{
-              backgroundColor: "black",
-              padding: 10,
-              borderRadius: 5,
-              marginTop: 30,
-            }}
-          >
-            <Text
+          {loading == true ? (
+            <TouchableOpacity
+              disabled={true}
               style={{
-                color: "white",
-                fontSize: 18,
-                textAlign: "center",
+                backgroundColor: "black",
+                padding: 10,
+                borderRadius: 5,
+                marginTop: 30,
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "center",
               }}
             >
-              Login
-            </Text>
-          </TouchableOpacity>
+              <ActivityIndicator
+                size="small"
+                color="white"
+                style={{ marginRight: 10 }}
+              />
+              <Text
+                style={{
+                  color: "white",
+                  fontSize: 18,
+                  textAlign: "center",
+                }}
+              >
+                Login...
+              </Text>
+            </TouchableOpacity>
+          ) : (
+            <TouchableOpacity
+              // onPress={() => navigate.navigate("MainScreen")}
+              onPress={handleLogin}
+              style={{
+                backgroundColor: "black",
+                padding: 10,
+                borderRadius: 5,
+                marginTop: 30,
+              }}
+            >
+              <Text
+                style={{
+                  color: "white",
+                  fontSize: 18,
+                  textAlign: "center",
+                }}
+              >
+                Login
+              </Text>
+            </TouchableOpacity>
+          )}
         </View>
       </View>
     </ScrollView>
