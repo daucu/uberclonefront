@@ -5,8 +5,10 @@ import { TextInput } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useEffect } from "react";
 import { API } from "../constant/API";
+import { useNavigation } from "@react-navigation/native";
 
 const Account = () => {
+  const navigate = useNavigation();
   const [active, setActive] = useState(false);
 
   const [data, setData] = useState({});
@@ -41,14 +43,38 @@ const Account = () => {
       }}
     >
       <View>
-        <Text
+        <View
           style={{
-            fontSize: 30,
-            fontWeight: 400,
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "center",
           }}
         >
-          Account Info
-        </Text>
+          <Text
+            style={{
+              fontSize: 30,
+              fontWeight: 400,
+            }}
+          >
+            Account Info
+          </Text>
+          <View>
+            <TouchableOpacity
+              onPress={() => {
+                AsyncStorage.removeItem("token")
+                  .then(() => {
+                    navigate.navigate("Login");
+                  })
+                  .catch((e) => {
+                    console.log(e);
+                  });
+              }}
+            >
+              <Text>Logout</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
         <View
           style={{
             marginTop: 20,

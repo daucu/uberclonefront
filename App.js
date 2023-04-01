@@ -1,6 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
-import { Provider } from "react-redux";
+import { Provider, useDispatch } from "react-redux";
 import HomeScreen from "./screens/HomeScreen";
 import { Store } from "./Store";
 import { SafeAreaProvider } from "react-native-safe-area-context";
@@ -17,49 +17,19 @@ import Services from "./screens/Services";
 import Account from "./screens/Account";
 import Help from "./screens/Help";
 import Wallet from "./screens/Wallet";
+import { useState } from "react";
+import { CheckLogin } from "./Reducers/AuthReducer";
 
 export default function App() {
   const Stack = createNativeStackNavigator();
-  // disable yellow warnings
-
-  // code to get user profile
-  // const getProfile = async () => {
-  //   const token = await AsyncStorage.getItem("token");
-  //   console.log("TOKEN->", token);
-  //   const user = await AsyncStorage.getItem("user");
-  //   const id = JSON.parse(user).id;
-  //   const response = await fetch(`${API}/getuser/${id}`, {
-  //     method: "GET",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       Authorization: `Bearer ${token}`,
-  //     },
-  //   });
-  //   const fetchedUser = await response.json();
-  //   if (fetchedUser.status === "found") {
-  //     setFetcheduser(fetchedUser.data);
-  //     console.log("fetchedUser", fetchedUser.data);
-  //   } else {
-  //     navigate.navigate("Login");
-  //   }
-  // };
-  // useEffect(() => {
-  //   getProfile();
-  // }, []);
+  const [islogin, setIslogin] = useState(false);
 
   return (
     <Provider store={Store}>
       <StatusBar style="dark" />
       <NavigationContainer>
         <SafeAreaProvider>
-          <Stack.Navigator>
-            <Stack.Screen
-              name="HomeScreen"
-              component={HomeScreen}
-              options={{
-                headerShown: false,
-              }}
-            />
+          <Stack.Navigator initialRouteName="HomeScreen">
             <Stack.Screen
               name="MainScreen"
               component={MainScreen}
@@ -137,6 +107,13 @@ export default function App() {
               component={Wallet}
               options={{
                 headerShown: true,
+              }}
+            />
+            <Stack.Screen
+              name="HomeScreen"
+              component={HomeScreen}
+              options={{
+                headerShown: false,
               }}
             />
           </Stack.Navigator>

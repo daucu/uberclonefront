@@ -14,12 +14,30 @@ import PhoneInput from "react-native-phone-number-input";
 import { useNavigation } from "@react-navigation/native";
 import { API } from "../constant/API";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { CheckLogin } from "../Reducers/AuthReducer";
 
 const Login = () => {
   const navigate = useNavigation();
+  useEffect(() => {
+    console.log(loggedIn);
+    if (loggedIn) {
+      // navigate.navigate("MainScreen");
+      alert(loggedIn)
+    }
+  }, [loggedIn]);
+
   const [value, setValue] = useState();
   const [formattedValue, setFormattedValue] = useState("");
   const [password, setPassword] = useState("");
+
+  const dispatch = useDispatch();
+  const { loggedIn } = useSelector((state) => state.auth);
+
+  useEffect(() => {
+    dispatch(CheckLogin());
+  }, []);
 
   const handleLogin = async () => {
     // console.log(value, password);
