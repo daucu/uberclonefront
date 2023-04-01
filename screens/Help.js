@@ -13,7 +13,7 @@ const Help = () => {
       }}
     >
       <View>
-        <Text style={{ fontSize: 30, fontWeight: "500" }}>
+        <Text style={{ fontSize: 25, fontWeight: "500" }}>
           How to use the app?
         </Text>
         <Text style={styles.inp}>1. Add your pick up location</Text>
@@ -28,31 +28,17 @@ const Help = () => {
         <Text style={styles.inp}>10. Rate your driver</Text>
       </View>
       <View>
-        <Text style={{ fontSize: 25, fontWeight: "400", marginTop: 20 }}>
+        <Text style={{ fontSize: 21, fontWeight: "400", marginTop: 50 }}>
           Don't forget to tie your seatbelt!
         </Text>
         <View
           style={{
             display: "flex",
-            flexDirection: "row",
             justifyContent: "space-between",
             marginTop: 10,
             alignItems: "center",
           }}
         >
-          <View
-            style={{
-              width: 50,
-              backgroundColor: "#c4c4c4",
-              padding: 10,
-              borderRadius: 7,
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <AntDesign name="customerservice" size={24} color="black" />
-          </View>
           <View
             style={{
               width: 300,
@@ -98,7 +84,7 @@ export default Help;
 
 const styles = StyleSheet.create({
   inp: {
-    fontSize: 17,
+    fontSize: 15,
     fontWeight: "400",
     color: "gray",
     marginTop: 10,

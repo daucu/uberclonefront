@@ -5,8 +5,6 @@ import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityI
 import { TextInput } from "react-native";
 import { TouchableOpacity } from "react-native";
 const ChangePassword = () => {
-
-
   return (
     <ScrollView style={styles.container}>
       <View style={styles.inside}>
@@ -55,7 +53,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   insidetext: {
-    fontSize: 30,
+    fontSize: 25,
     fontWeight: "bold",
   },
   middle: {
@@ -65,7 +63,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   middletext: {
-    fontSize: 17,
+    fontSize: 16,
     fontWeight: 300,
   },
   inputcont: {

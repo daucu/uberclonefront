@@ -77,7 +77,8 @@ const Profile = () => {
         <View
           style={{
             display: "flex",
-
+            paddingLeft: 20,
+            paddingRight: 20,
             marginTop: 20,
             flexDirection: "row",
             alignItems: "center",
@@ -135,20 +136,20 @@ const Profile = () => {
           }}
         >
           <TouchableOpacity
-            style={tw`bg-gray-200 p-2 rounded-lg w-[80px]`}
+            style={tw`bg-gray-200 p-2 rounded-lg w-[70px]`}
             onPress={() => navigate.navigate("Help")}
           >
             <View>
               <Icon
                 name="help-box"
                 type="material-community"
-                size={30}
+                size={25}
                 color="black"
               />
             </View>
             <Text
               style={{
-                fontSize: 20,
+                fontSize: 17,
                 color: "black",
                 textAlign: "center",
                 marginTop: 5,
@@ -158,7 +159,7 @@ const Profile = () => {
             </Text>
           </TouchableOpacity>
           <TouchableOpacity
-            style={tw`bg-gray-200 p-2 rounded-lg w-[80px]`}
+            style={tw`bg-gray-200 p-2 rounded-lg w-[70px]`}
             onPress={() => navigate.navigate("Wallet")}
           >
             <View
@@ -169,11 +170,11 @@ const Profile = () => {
               }}
             >
               {/* entypo icon */}
-              <Entypo name="wallet" size={30} color="black" />
+              <Entypo name="wallet" size={25} color="black" />
             </View>
             <Text
               style={{
-                fontSize: 20,
+                fontSize: 17,
                 color: "black",
                 textAlign: "center",
                 marginTop: 5,
@@ -183,7 +184,7 @@ const Profile = () => {
             </Text>
           </TouchableOpacity>
           <TouchableOpacity
-            style={tw`bg-gray-200 p-2 rounded-lg w-[80px]`}
+            style={tw`bg-gray-200 p-2 rounded-lg w-[70px]`}
             onPress={() => navigate.navigate("ActiviytScreen")}
           >
             <View
@@ -193,11 +194,11 @@ const Profile = () => {
                 justifyContent: "center",
               }}
             >
-              <Ionicons name="time-sharp" size={30} color="black" />
+              <Ionicons name="time-sharp" size={25} color="black" />
             </View>
             <Text
               style={{
-                fontSize: 20,
+                fontSize: 17,
                 color: "black",
                 textAlign: "center",
                 marginTop: 5,
@@ -227,7 +228,7 @@ const Profile = () => {
             <View>
               <Text
                 style={{
-                  fontSize: 20,
+                  fontSize: 16,
                   color: "black",
                 }}
               >
@@ -258,7 +259,7 @@ const Profile = () => {
             <View>
               <Text
                 style={{
-                  fontSize: 20,
+                  fontSize: 16,
                   color: "black",
                 }}
               >
@@ -284,7 +285,7 @@ const Profile = () => {
             <View>
               <Text
                 style={{
-                  fontSize: 20,
+                  fontSize: 16,
                   color: "black",
                 }}
               >
@@ -314,7 +315,7 @@ const Profile = () => {
             <View>
               <Text
                 style={{
-                  fontSize: 20,
+                  fontSize: 16,
                   color: "black",
                 }}
               >
@@ -340,7 +341,7 @@ const Profile = () => {
             <View>
               <Text
                 style={{
-                  fontSize: 20,
+                  fontSize: 16,
                   color: "black",
                 }}
               >
@@ -366,7 +367,7 @@ const Profile = () => {
             <View>
               <Text
                 style={{
-                  fontSize: 20,
+                  fontSize: 16,
                   color: "black",
                 }}
               >
@@ -392,7 +393,7 @@ const Profile = () => {
             <View>
               <Text
                 style={{
-                  fontSize: 20,
+                  fontSize: 16,
                   color: "black",
                 }}
               >
@@ -422,7 +423,7 @@ const Profile = () => {
             <View>
               <Text
                 style={{
-                  fontSize: 20,
+                  fontSize: 16,
                   color: "black",
                 }}
               >
